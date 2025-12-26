@@ -2,7 +2,16 @@ import 'dart:io';
 import 'dart:math';
 
 void main(){
-  print("***multiplication table using nested for loop***");
+  print("**different text quotation marks in dart**");
+  print("double quotes");
+  print('single quotes');
+  print(""" 
+  
+  triple nested quotes for multi line  text
+  """);
+
+
+  print("\n***multiplication table using nested for loop***");
 
   outerLoop:
   for(var i=1; i<=10; i++){
