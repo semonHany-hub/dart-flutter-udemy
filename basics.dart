@@ -161,4 +161,141 @@ void main(){
   print(name.trim());
   //all of these prvious numbers and Srting methods are just return 
   //don't change inplace so we used print directly with each of them.
+
+
+  print("\n\n****Lists****");
+  List<int> list1=[7,2,93,25,3];
+  print(list1);
+
+  print("\n***accessing first element (indexing, method)***");
+  print(list1[0]);
+  print(list1.first);
+
+  print("\n***accessing last element (indexing, method)***");
+  int last_index=list1.length-1;
+  print(list1[last_index]);
+  print(list1.last);
+
+  print("\n***add element(s) at the end***");
+  list1[2]=8;
+  list1.add(10);
+  list1.addAll([7,2,4]);
+  print(list1);
+
+  print("\n***insert element(s) at a specific position***");
+  list1.insert(3, 44);
+  list1.insertAll(4, [55,77,22]);
+  print(list1);
+
+  print("\n***remove item(s)***");
+  list1.remove(10);
+  list1.removeAt(2);
+  list1.removeLast();
+  list1.removeRange(2,4);
+  print(list1);
+
+  print("\n***replace range and reverse***");
+  list1.replaceRange(2,4, [6,8,2,5]);
+  print(list1.reversed);
+
+  print("\n***looping on list(for, for...in, forEach)***");
+  for(int i=0; i<=list1.length-1; i++)
+    print(list1[i]);
+
+  print("\n");
+  for(int item in list1)
+    print(item);
+
+  print("\n");
+  list1.forEach((item){
+    print(item);
+  });
+
+  print("\n***looping on 2D list***");
+  List<List<int>> list2=[[5,8,3], [9,3,6]];
+  print(list2);
+
+  for(var i=0; i<=1; i++){
+    for(var j=0; j<=2; j++)
+      print(list2[i][j]);
+  }
+
+  print("\n");
+  for(var i in list2)
+    for(var j in i)
+      print(j);
+
+  print("\n\n****Sets****");
+  Set<int> set1={7,2,9,4};
+  print(set1);
+
+  print("\n***add element(s) at the end***");
+  set1.add(54);
+  set1.addAll([8,2,5,3]);
+  print(set1);
+
+  print("\n***check membership and remove***");
+  print(set1.contains(54));
+  set1.remove(54);
+  print(set1.contains(54));
+  print(set1.elementAt(0));
+
+  print("\n***looping on Set***");
+  set1.forEach((element){
+    print(element);
+  });
+
+  print("\n***check empty state and clear content***");
+  print(set1.isNotEmpty);
+  set1.clear();
+  print(set1.isEmpty);
+
+  print("\n***operations on Sets***");
+  set1={7,2,9,3};
+  var set2=<int> {8,2,4,7};
+
+  print("union: ${set1.union(set2)}");
+  print("intersection: ${set1.intersection(set2)}");
+  print("set1 difference set2: ${set1.difference(set2)}");
+  print("set2 difference set1: ${set2.difference(set1)}");
+
+  
+  print("\n\n****Maps****");
+  Map<String, dynamic> map={
+    "name":"semon hany",
+    "age":21,
+    "faculty":"FCI",
+    "hoppy":"coding"
+  }; //map name arise from [key:value] pairs mapping like in hash table.
+
+  print(map);
+
+  print("\n***keys, values, entries iterables***");
+  print(map.keys);
+  print(map.values);
+  print(map.entries);
+
+  print("\n***check membership & add new entries***");
+  print(map.containsValue("FCI"));
+  map.remove("age");
+  print(map.containsKey("age"));
+  map.addAll({"section":"CS", "level":3});
+  print(map);
+
+  print("\n***looping on map(for...in , forEach)***");
+  for(String key in map.keys)
+    print("[$key:${map[key]}]");
+  
+  print("\n");
+  for(var value in map.values)
+    print(value);
+
+  print("\n");
+  for(var entry in map.entries)
+    print("[${entry.key}:${entry.value}]");
+  
+  print("\n");
+  map.forEach((key, value){
+    print("[$key:$value]");
+  });
 }
