@@ -11,6 +11,7 @@ void main(){
   """);
 
 
+
   print("\n***multiplication table using nested for loop***");
 
   outerLoop:
@@ -87,13 +88,22 @@ void main(){
 
   while(true){
     try{
-      print("enter your birth_Date (DD/MM/YYYY)->");
-      var birth_date=stdin.readLineSync()!;
-      if(birth_date.length<10)
-        print("you entered invalid date format");
+      // print("enter your birth_Date (DD/MM/YYYY)->");
+      // var birth_date=stdin.readLineSync()!;
+      // if(birth_date.length<10)
+      //   print("you entered invalid date format");
+      // else{
+      //   int birth_year=int.parse(birth_date.substring(6));
+      //   int age=DateTime.now().year - birth_year;
+      //   print("your age now-> $age");
+      //   break;
+      // }
+      print("enter you year of  birth->");
+      int ?birth_year= int.tryParse(stdin.readLineSync()??'0'); //tryParse() differ from parse() in that it first check if the argument will be valid to parse into the desired type if not it returns null else returns the parsed value.
+      if(birth_year==null || birth_year==0)
+        print("invalid year!");
       else{
-        int birth_year=int.parse(birth_date.substring(6));
-        int age=DateTime.now().year-birth_year;
+        int age=DateTime.now().year - birth_year;
         print("your age now-> $age");
         break;
       }
@@ -298,4 +308,93 @@ void main(){
   map.forEach((key, value){
     print("[$key:$value]");
   });
+
+  print("\n\n****Functions****");
+  throwException();
+
+  print("\n***'where' function(HOF with call-back function in lambda expression)***");
+  List<dynamic> li=[3, 6.3, 9, 53];
+  li.removeWhere((elem)=>elem==53);
+  print(li);
+  li.retainWhere((elem)=>elem%3==0);
+  print(li);
+  print(li.where((elem)=>elem%3==0));
+  print(li.firstWhere((elem)=>elem%3==0, orElse: ()=>-1)); //return -1 if no elements match the condition
+  print(li.lastWhere((elem)=>elem%3==0, orElse: ()=>-1));
+  print(li.indexWhere((elem)=>elem%3==0, 1)); //return the index of the first element follow the return condition
+  print(li.lastIndexWhere((elem)=>elem%3==0));
+  print(li.whereType<int>());
+
+  try{
+    li.singleWhere((elem)=>elem%3==0); //throw error if multiple elements match the condition, so it handled inside try-catch
+  }catch(_){
+    print("found multiple elements divisible by 3!");
+  }
+
+  print("\n\n****Iterables****");
+  Iterable<int> I=[6,3,8,4,6];
+  I.forEach((item)=>print(item));
+  li=I.toList();
+  print(li);
+
+  var x=[4,7,2];
+  var y=[7,9,3];
+  var li2=[4, ...?x, if(y.length>3)...y]; //'...?' this spred operator work if the iterable not null
+  print(li2);
+
+  var sum=0.0;
+  var mapReturn=(I as List<int>).map((item){
+    sum+=item;
+    return item;
+  });
+  print(mapReturn);
+  print(sum);
+  //if we print 'sum' before mapReturn it will be 0.0 that's because the iterables are lazy, so it's better to use forEach() instead.
+
+  print("\n\n***typedef***");
+  calc(4,5,modBy2); //will throw error during runtime (very dangerous in project production)
+  typedCalc(6, 3, modBy2); //highligh the error in the IDE editor clearly after using typedef to set function type(#parameters)
+}
+
+void throwException(){
+  try{
+    for(var i=1; i<=10; i++){
+      if(i==5)
+        throw FormatException;
+      print("i=$i");
+    }
+  }
+  catch(error){
+    print(error);
+  }
+}
+
+add(x, y){
+  print("$x + $y = ${x+y}");
+}
+
+sub(x, y){
+  print("$x - $y = ${x-y}");
+}
+
+mul(x, y){
+  print("$x * $y = ${x*y}");
+}
+
+div(x, y){
+  print("$x / $y = ${x/y}");
+}
+
+modBy2(num){
+  print("$num / 2 = ${num%2}");
+}
+
+calc(x, y, Function f){
+  f(x,y);
+}
+
+typedef twoOperanded(a,b);
+
+typedCalc(x, y, twoOperanded f){
+  f(x,y);
 }

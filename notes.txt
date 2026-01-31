@@ -1,0 +1,5 @@
+- lambda expression in functions represt the arrow function (named or anonymous) used mostly with callback functions.
+- higher-order-function is a function which at least one of its parameter is a call-back function or a reference to Function.
+- 'where' is a list higher-order-function acts as the filter() method as it returns a tuple(iterable) of the elements follow the return condition.
+- iterables are dataStructures can be iterated upon using loops (eg. String, List, Set, Map). can be decalred as a standalone data structure type.
+- in dart, the arrow function must have a single expression sentence after the arrow. so when multiple lines required use block function instead.
