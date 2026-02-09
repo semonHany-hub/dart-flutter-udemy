@@ -1,5 +1,16 @@
+                                   basics
 - lambda expression in functions represt the arrow function (named or anonymous) used mostly with callback functions.
 - higher-order-function is a function which at least one of its parameter is a call-back function or a reference to Function.
 - 'where' is a list higher-order-function acts as the filter() method as it returns a tuple(iterable) of the elements follow the return condition.
 - iterables are dataStructures can be iterated upon using loops (eg. String, List, Set, Map). can be decalred as a standalone data structure type.
 - in dart, the arrow function must have a single expression sentence after the arrow. so when multiple lines required use block function instead.
+
+                                    OOP
+- abstract class acts as an interface prevents creating direct objects from it but from the classes inherit from it.
+- when a class inherit from an abstract class it must implement each abstract method [method with no implementation (execution body)] inside it.
+- the class that have at least one abstract method must be abstract class.
+- despite dart doesn't support multi-inheritance, Interface support it using the keyword 'implements' instead of 'extends', but require overriding each attribute and method from the super classes(either abstract or implemented methods).
+- interfaces provide a contract of required methods that must be implemented, while mixins separate reusable behavior that can be reused by multiple classes using 'with' keyword. Both enable multiple inheritance.
+- every data type in dart (built-in (e.g int, double, num,...) or user-defined(classes)) considered as objects.
+- int declared variable has built-in attributes and methods like gcd() that return the greatest common divisor between the caller int object and the passed argument.
+- any user-defined class by default extends another class called 'Object' containing some properties (runtimeType, hashCode, noSuchMethod(), toString()).

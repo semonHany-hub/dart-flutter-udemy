@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 void main(){
-  print("**different text quotation marks in dart**");
+  print("***different text quotation marks in dart***");
   print("double quotes");
   print('single quotes');
   print(""" 
@@ -10,7 +10,12 @@ void main(){
   triple nested quotes for multi line  text
   """);
 
+  // print("\n***const VS final***");
+  // const currentYear_const=DateTime.now().year;
+  // final currentYear_final=DateTime.now().year;
 
+  // currentYear_const=2004;
+  // currentYear_final=2045;
 
   print("\n***multiplication table using nested for loop***");
 
@@ -353,7 +358,7 @@ void main(){
 
   print("\n\n***typedef***");
   calc(4,5,modBy2); //will throw error during runtime (very dangerous in project production)
-  typedCalc(6, 3, modBy2); //highligh the error in the IDE editor clearly after using typedef to set function type(#parameters)
+  //typedCalc(6, 3, modBy2); //highligh the error in the IDE editor clearly after using typedef to set function type(#parameters)
 }
 
 void throwException(){
