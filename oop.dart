@@ -93,4 +93,56 @@ void main(){
   dog1.breastfeeds();
   dog1.canBear();
   dog1.canBark();
+
+  //enum class
+  print("\n***enum class***");
+  print("${Color.values}\n");
+  Color.values.forEach((Color c){
+    printColor(c);
+  });
+
+  //generic class
+  print("\n***generic class***");
+  Generic<int, String> g1=Generic(1, "semon");
+  g1.printValues();
+
+  Generic<String, bool> g2=Generic("FCI", true);
+  g2.printValues();
+
+}
+
+enum Color{
+  red, green, blue, pink, grey
+}
+
+void printColor(Color c){
+  switch(c){
+    case Color.red:
+      print("${Color.red.index +1} : red");
+      break;
+    case Color.green:
+      print("${Color.green.index +1} : green");
+      break;
+    case Color.blue:
+      print("${Color.blue.index +1} : blue");
+      break;
+    case Color.pink:
+      print("${Color.pink.index +1} : pink");
+      break;
+    case Color.grey:
+      print("${Color.grey.index +1} : grey");
+      break;
+  }
+}
+
+class Generic<T, E>{
+  late T x;
+  late E y;
+
+  Generic(this.x, this.y);
+
+  printValues(){
+    print("x-> ${x}");
+    print("y-> ${y}");
+  }
 }

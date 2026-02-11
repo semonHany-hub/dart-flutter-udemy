@@ -14,3 +14,5 @@
 - every data type in dart (built-in (e.g int, double, num,...) or user-defined(classes)) considered as objects.
 - int declared variable has built-in attributes and methods like gcd() that return the greatest common divisor between the caller int object and the passed argument.
 - any user-defined class by default extends another class called 'Object' containing some properties (runtimeType, hashCode, noSuchMethod(), toString()).
+- generic classes allow you to create a class that can work with any data type for its attributes without specifying the data type until runtime.
+- we can make external package of reusable variables and methods then import it in another module when they're needed.
