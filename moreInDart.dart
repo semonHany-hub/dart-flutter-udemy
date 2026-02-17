@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:io';
 
 void main(){
     //math methods
@@ -64,4 +65,125 @@ void main(){
     print("${DateTime.friday}-> Friday");
     print("${DateTime.saturday}-> Saturday");
     print("${DateTime.sunday}-> Sunday");
+
+    //Platform
+    print("\n***Platform***");
+    print(Platform.executable); //print the dart-sdk bin directory path
+    print(Platform.numberOfProcessors); //print number of logical processors (the same as shown in task manager)
+    print(Platform.operatingSystem);
+    print(Platform.version); //dart-sdk version
+    print(Platform.script); //the current executed file directory
+    print(Platform.operatingSystemVersion);
+
+    print("----------------\n");
+    print(Platform.isIOS);
+    print(Platform.isAndroid);
+    print(Platform.isWindows);
+    print(Platform.isLinux);
+    print(Platform.isMacOS);
+    print(Platform.isFuchsia);
+
+    print("----------------\n");
+    Platform.environment.forEach((key, value){
+        print("$key : $value");
+    });
+
+    //operator overloading
+    print("\n***operator overloading***");
+    Num num1=Num(36);
+    Num num2=Num(8);
+    Num sum=num1+num2;
+    print("objects sum-> ${sum.num}");
+
+    //polymorphism (overriding)
+    print("\n***polymorphism***");
+    final shapes=<Shape>[Square(), Circle(), Rectangle()];
+    for(Shape shape in shapes){
+        shape.type();
+    }
+
+    //lexical closure & callable class
+    print("\n***lexical closure***");
+    Function fun1=(){
+        String message="hello";
+        Function fun2=(msg){
+            message=msg;
+            print(message);
+        };
+        return fun2;
+    };
+
+    fun1()("Hi!");
+
+    Function countParent=(){
+        int counter=2;
+        return (){
+            counter++;
+            print("counter-> $counter");
+        };
+    };
+    Function counter=countParent();
+    counter();
+    counter();
+    counter();
+
+    Human h1=Human("semon", 22);
+    h1(); //callable class concept enable objects to act as a lexical closure function when we declare the special method called 'call' inside it.
+
+    //extension function
+    print("\n***extension function***"); //extension function is declaring a function on a built-in class like String or external class to extend its functionality.
+    int num=parsingStrNum("26").parseInt(); //parseInt() is a built-in standalone function in javaScript but doesn't declared in dart.
+    print("parsed num-> $num");
+}
+
+class Num{
+    int num;
+    Num([this.num=0]);
+
+    Num operator +(Num operand2){
+        return new Num(this.num+operand2.num);
+    }
+}
+
+abstract class Shape{
+    type(){
+        print("shape...");
+    } //method with implementation in abstract class doesn't have to be overrided
+}
+
+class Square extends Shape{
+    typeS(){
+        print("square...");
+    }
+}
+
+class Circle extends Shape{
+    @override
+    type(){
+        print("circle...");
+    }
+}
+
+class Rectangle extends Shape{
+    @override
+    type(){
+        print("rectangle...");
+    }
+}
+
+class Human{
+    String name='';
+    int ?age;
+
+    Human(this.name, this.age);
+
+    call(){
+        print("name: $name, age: $age");
+    }
+}
+
+extension parsingStrNum on String{
+    int parseInt(){
+        return int.parse(this); //parse the caller object (of type String).
+    }
 }

@@ -400,6 +400,7 @@ calc(x, y, Function f){
 
 typedef twoOperanded(a,b);
 
+
 typedCalc(x, y, twoOperanded f){
   f(x,y);
 }
