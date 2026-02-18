@@ -21,3 +21,14 @@
 - Platform is a class declared in dart.io used to check the adaptness of the dart script to different platforms.
 - lexical closure (غلق معجمى) is declaring function inside another where this nested function can access variables from the outside surroundings 
   and have memory effect(closure) that it remember them and still can change them even if the outer function ended.
+
+                                packages
+- create dart application: 'dart create app-name'. 
+- search in web about 'pub.dev'-> search about the desired package-> see readme and how to install-> in pubspec.yaml file(sensitive to indentation) add the packages to use under dependencies with its latest version manually then click download sign in top right or ctrl+s.
+  or: install 'pubspec assist' extension-> open command palette (ctrl+shift+p)-> search about pubspec assist-> enter the packages name separated by commas to add automatically.
+  or: in command palette search about 'add dependencies' (we find that dart itself provide this functionality)-> add package name.
+
+- dart has functionality to fix syntax errors (with yellow zigzag underline): inside specific dart file-> command palette-> search for '>fix all'
+
+                                 API
+- API (Application Programming Interface) is a set of rules and endpoints that allow a client program to communicate with a server. The data exchanged between them is usually formatted in JSON or XML.

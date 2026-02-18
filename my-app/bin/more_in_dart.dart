@@ -104,24 +104,25 @@ void main()async{
 
     //lexical closure & callable class
     print("\n***lexical closure***");
-    Function fun1=(){
+    Function fun1(){
         String message="hello";
-        Function fun2=(msg){
+        void fun2 (msg){
             message=msg;
             print(message);
-        };
+        }
         return fun2;
-    };
+    } //Function here represent the return type not declaration keyword like in javaScript.
 
     fun1()("Hi!");
 
-    Function countParent=(){
+    Function countParent(){
         int counter=2;
         return (){
             counter++;
             print("counter-> $counter");
         };
-    };
+    }
+
     Function counter=countParent();
     counter();
     counter();
@@ -132,7 +133,7 @@ void main()async{
 
     //extension function
     print("\n***extension function***"); //extension function is declaring a function on a built-in class like String or external class to extend its functionality.
-    int num=parsingStrNum("26").parseInt(); //parseInt() is a built-in standalone function in javaScript but doesn't declared in dart.
+    int num=ParsingStrNum("26").parseInt(); //parseInt() is a built-in standalone function in javaScript but doesn't declared in dart.
     print("parsed num-> $num");
 
     //Future
@@ -219,7 +220,7 @@ class Human{
     }
 }
 
-extension parsingStrNum on String{
+extension ParsingStrNum on String{
     int parseInt(){
         return int.parse(this); //parse the caller object (of type String).
     }
