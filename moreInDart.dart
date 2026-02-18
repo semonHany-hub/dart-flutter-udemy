@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'dart:io';
 
-void main(){
+void main()async{
     //math methods
     print("\n***math methods***");
     print("sin(30)-> ${sin(30*pi/180)}"); //these triangle methods work only with radian angles so coverted to degree by multiplying with (pi/180)
@@ -134,6 +134,43 @@ void main(){
     print("\n***extension function***"); //extension function is declaring a function on a built-in class like String or external class to extend its functionality.
     int num=parsingStrNum("26").parseInt(); //parseInt() is a built-in standalone function in javaScript but doesn't declared in dart.
     print("parsed num-> $num");
+
+    //Future
+    print("\n***Future***");
+    Future f1=Future(()=>5); //acts the same as using Future.delayed with Duration 0. both put in event queue and executed after the current synchronous code finished.
+    f1.then((value) => print(value+5));
+
+    print(9); //print before f1.then (10) that's because of the nature of Future object behavior as its name refer.
+
+    final Future<double> f2= Future.delayed(Duration(seconds: 2), ()=>double.parse("85.3ygf"));
+    f2.then((value) => print(value))
+    .catchError((error)=> print(error));
+
+    Future<void> f3=Future.value(34).then((value)=>print(value)).catchError((e)=>print(e));//faster than f1 that execute callback function in Future object creation.
+
+    //Stream
+    print("\n***stream***"); //stream differ from Future in that it returns multiple events rather than one value.
+    Stream s1= Stream.periodic(Duration(milliseconds:500), (a)=>a).take(15); //a here handled by default as a counter start from 0
+    final sub=s1.listen((data)=> print(data*2), cancelOnError:true); //listen method called on any change in the returned value from the stream callback func to handle it with onData callback parameter
+    sub.onDone(()=>print("s1 Done!")); //will triggered when the a counter value become 15 after using .take(15) in stream declaration. 
+    sub.onError((error)=>print(error));
+
+    //one stream can't listen more than once unless it created from broadcast StreamController.
+
+    // Stream s2=s1.where((val)=>val%2==1).takeWhile((element) => element<=15);
+    // final sub2=s2.listen((_)=>{}, onDone:()=>print("s2 Done!"), onError:(err)=>print(err), cancelOnError:true);
+    // sub2.onData((data){data>15?sub2.cancel():print(data+1);}); //canceling the stream subscription won't call onDone(), unlike when using .takeWhile() or closing the streamController.
+    //as we need to access the subscription sub2 (listen method) inside onData we declare it outside and put in place empty function (_)={} (required)
+
+    //async-await
+    // print("stream even values after await");
+    // await for(int val in s1){
+    //     if(val*3>15) break;
+    //     print(val*3);
+    // }//this behavior acts as a subsciption like the method listen so throw exception if s1 listened before.
+
+    void f4=await Future.delayed(Duration(seconds: 5), ()=>{print("f4 after await and wait 5 seconds...")}).catchError((e)=>{print(e)}); //.then() used to handle the returned value from the Future callback func but with void Future here it's no need for it.
+    print("line after f4");
 }
 
 class Num{
