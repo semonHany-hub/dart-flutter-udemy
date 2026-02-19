@@ -231,14 +231,17 @@ void main(){
   print(list2);
 
   for(var i=0; i<=1; i++){
-    for(var j=0; j<=2; j++)
+    for(var j=0; j<=2; j++){
       print(list2[i][j]);
+    }
   }
 
   print("\n");
-  for(var i in list2)
-    for(var j in i)
+  for(var i in list2){
+    for(var j in i){
       print(j);
+    }
+  }
 
   print("\n\n****Sets****");
   Set<int> set1={7,2,9,4};
@@ -298,16 +301,18 @@ void main(){
   print(map);
 
   print("\n***looping on map(for...in , forEach)***");
-  for(String key in map.keys)
+  for(String key in map.keys){
     print("[$key:${map[key]}]");
+  }
   
   print("\n");
   for(var value in map.values)
     print(value);
 
   print("\n");
-  for(var entry in map.entries)
+  for(var entry in map.entries){
     print("[${entry.key}:${entry.value}]");
+  }
   
   print("\n");
   map.forEach((key, value){
@@ -318,17 +323,17 @@ void main(){
   throwException();
 
   print("\n***'where' function(HOF with call-back function in lambda expression)***");
-  List<dynamic> li=[3, 6.3, 9, 53];
-  li.removeWhere((elem)=>elem==53);
+  List<dynamic> li=[3, 53, 6.3, 9, 53];
+  li.removeWhere((elem)=>elem==53); //return new list after removing the elments matching the condition from the original list
   print(li);
-  li.retainWhere((elem)=>elem%3==0);
+  li.retainWhere((elem)=>elem%3==0); //return a list after keeping only the elements match the return condition
   print(li);
-  print(li.where((elem)=>elem%3==0));
+  print(li.where((elem)=>elem%3==0)); //return iterable of the elements match the return condition
   print(li.firstWhere((elem)=>elem%3==0, orElse: ()=>-1)); //return -1 if no elements match the condition
   print(li.lastWhere((elem)=>elem%3==0, orElse: ()=>-1));
-  print(li.indexWhere((elem)=>elem%3==0, 1)); //return the index of the first element follow the return condition
+  print(li.indexWhere((elem)=>elem%3==0, 1)); //return the index of the first element match the return condition, the second parameter is the index to start search from
   print(li.lastIndexWhere((elem)=>elem%3==0));
-  print(li.whereType<int>());
+  print(li.whereType<int>()); //return itarable of elements with specific type
 
   try{
     li.singleWhere((elem)=>elem%3==0); //throw error if multiple elements match the condition, so it handled inside try-catch
@@ -364,8 +369,9 @@ void main(){
 void throwException(){
   try{
     for(var i=1; i<=10; i++){
-      if(i==5)
+      if(i==5){
         throw FormatException;
+      }
       print("i=$i");
     }
   }
@@ -398,9 +404,10 @@ calc(x, y, Function f){
   f(x,y);
 }
 
-typedef twoOperanded(a,b);
+// typedef TwoOperanded (a, b);
+typedef TwoOperanded= dynamic Function (dynamic a,dynamic b); //generic typedef Function
 
 
-typedCalc(x, y, twoOperanded f){
+typedCalc(x, y, TwoOperanded f){
   f(x,y);
 }

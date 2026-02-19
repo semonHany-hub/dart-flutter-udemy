@@ -133,6 +133,7 @@ void main()async{
 
     //extension function
     print("\n***extension function***"); //extension function is declaring a function on a built-in class like String or external class to extend its functionality.
+    // int num = "26".parseInt();
     int num=ParsingStrNum("26").parseInt(); //parseInt() is a built-in standalone function in javaScript but doesn't declared in dart.
     print("parsed num-> $num");
 

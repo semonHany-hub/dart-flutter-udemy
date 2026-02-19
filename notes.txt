@@ -28,7 +28,7 @@
   or: install 'pubspec assist' extension-> open command palette (ctrl+shift+p)-> search about pubspec assist-> enter the packages name separated by commas to add automatically.
   or: in command palette search about 'add dependencies' (we find that dart itself provide this functionality)-> add package name.
 
-- dart has functionality to fix syntax errors (with yellow zigzag underline): inside specific dart file-> command palette-> search for '>fix all'
+- dart has functionality to fix syntax errors (with yellow(or blue) zigzag underline): inside specific dart file-> command palette-> search for '>fix all'
 
                                  API
 - API (Application Programming Interface) is a set of rules and endpoints that allow a client program to communicate with a server. The data exchanged between them is usually formatted in JSON or XML.
